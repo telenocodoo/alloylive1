@@ -1,0 +1,30 @@
+<odoo>
+    <record id="view_partnerform" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//field[@name='street']" position="after">
+                <field name="street1_arbi" placeholder="Street 1 Arabic..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+            </xpath>
+             <xpath expr="//field[@name='street2']" position="after">
+                <field name="street2_arbi" placeholder="Street 2 Arabic..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+             </xpath>
+
+            <xpath expr="//field[@name='function']" position="before">
+                <field name="jobcard_no" palce_holder="JobCard No"/>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="customer_arabic_name" placeholder="Arabic Name"/>
+                <field name="customer_code" placeholder="Customer Code"/>
+            </xpath>
+            <xpath expr="//notebook/page[@name='sales_purchases']/group[1]/group[1]/field[@name='customer']" position="after">
+                  <field name="is_agency"/>
+                   <field name="is_service_provider"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!--Report-->
+    <template id="account_receipts_report_template">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="doc.with_context({'lang': 'en_US'})"/>
+            <div class="page">
+                <t t-foreach="docs" t-as="o">
+                    <br/>
+                    <br/>
+                    <h1 class="text-center" style="margin-top:60px;">
+                        <span t-esc="o.journal_id.name"/>
+                    </h1>
+                    <h2>
+                        <t t-esc="o.name"/>
+                    </h2>
+                    <div id="informations" class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2" t-if="o.partner_id" name="partner">
+                            <strong>Partner</strong>
+                            <p class="m-0" t-field="o.partner_id.name"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Payment</strong>
+                            <p class="m-0" t-field="o.pay_now"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Account</strong>
+                            <p>
+                                <span class="m-0" t-field="o.account_id.code"/>
+                                <span class="m-0" t-field="o.account_id.name"/>
+                            </p>
+
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Status</strong>
+                            <p class="m-0" t-field="o.state"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2" t-if="o.company_id.id" name="company">
+                            <strong>Company</strong>
+                            <p class="m-0" t-field="o.company_id.name"/>
+                        </div>
+
+                    </div>
+                    <div id="informations" class="row mt32 mb32">
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Bill Date</strong>
+                            <p class="m-0" t-field="o.date"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Due Date</strong>
+                            <p class="m-0" t-field="o.date_due"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Reference</strong>
+                            <p class="m-0" t-field="o.reference"/>
+                        </div>
+                        <div class="col-auto mw-100 mb-2">
+                            <strong>Amount</strong>
+                            <p t-esc="'{0:,.2f}'.format(int(o.amount))"/>
+                        </div>
+                    </div>
+
+                    <div style="font-size:24px;margin-top:50px;">Receipt Items</div>
+                    <table class="table table-bordered" border="3" style="margin-bottom:700px;font-size:12px;">
+                        <thead>
+
+                            <tr>
+                                <th>Product</th>
+                                <th>Account</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Tax</th>
+                                <th>Amount</th>
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr t-foreach="o.line_ids" t-as="l">
+                                <td>
+                                    <span t-esc="l.product_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.account_id.code"/>
+                                    <span t-esc="l.account_id.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.quantity"/>
+                                </td>
+                                <td>
+                                    <span t-esc="'{0:,.2f}'.format(int(l.price_unit))"/>
+                                </td>
+                                <td>
+                                    <span t-esc="l.tax_ids.name"/>
+                                </td>
+                                <td>
+                                    <span t-esc="'{0:,.2f}'.format(int(l.price_subtotal))"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </t>
+
+            </div>
+        </t>
+    </template>
+    <!--TEMPLATE [Account Receipts Report]-->
+    <template id="account_receipts_report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="de_print_account_receipts.account_receipts_report_template"/>
+            </t>
+        </t>
+    </template>
+
+    <report id="action_account_receipts_report"
+            model="account.voucher"
+            string="Receipts"
+            report_type="qweb-pdf"
+            name="de_print_account_receipts.account_receipts_report"
+            file="de_print_account_receipts.account_receipts_report"
+            attachment_use="True"
+    />
+
+</odoo>

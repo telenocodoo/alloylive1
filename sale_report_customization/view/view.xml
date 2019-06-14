@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_saleorder_customize" inherit_id="sale.report_saleorder_document">
+
+            <xpath expr="//t[1]/t[1]/t[2]" position="replace">
+            </xpath>
+            <xpath expr="//t[1]/t[1]/t[2]" position="replace">
+            <div style="overflow:hidden">
+
+                            <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Customer Name:</span>
+                                <span t-esc="doc.partner_id.name"/>
+
+                            </div>
+                            <div class="right" style="float: right;white-space: nowrap;">
+                                <span style="font-weight:bold;" t-esc="doc.partner_id.customer_arabic_name"></span>
+                                <span style="font-weight:bold;">اسم ‫العميل‬: ‫‬</span>
+
+                            </div>
+                        </div>
+               <t t-if="doc.partner_id.mobile">
+                   <div style="overflow:hidden">
+                      <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Mobile:</span>
+                                <span t-esc="doc.partner_id.mobile"/>
+
+                            </div>
+                            <div class="right" style="float: right;white-space: nowrap;">
+                                <span style="font-weight:bold;" t-esc="doc.partner_id.mobile"></span>
+                                <span style="font-weight:bold;">التليفون المحمول: ‫‬</span>
+
+                            </div>
+                        </div>
+               </t>
+                 <t t-if="doc.partner_id.email">
+                 <div style="overflow:hidden">
+                  <div class="left" style="float: left;">
+                   <span style="font-weight:bold;">Email:</span>
+                      <span t-esc="doc.partner_id.email"/>
+
+                            </div>
+                            <div class="right" style="float: right;white-space: nowrap;">
+                                <span style="font-weight:bold;" t-esc="doc.partner_id.email"></span>
+                                <span style="font-weight:bold;">البريد الإلكتروني ‬: ‫‬</span>
+                            </div>
+                        </div>
+                 </t>
+                 <t t-if="doc.partner_id.vat">
+                     <div style="overflow:hidden">
+
+                            <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Vat:</span>
+                                <span t-esc="doc.partner_id.vat"/>
+
+                            </div>
+                            <div class="right" style="float: right;white-space: nowrap;">
+                                <span style="font-weight:bold;" t-esc="doc.partner_id.vat"></span>
+                                <span style="font-weight:bold;">  ‫الرقم‬ ‫الضريبة‬ :‬ ‫‬</span>
+
+                            </div>
+                        </div>
+                 </t>
+                 <t t-if="doc.partner_id.street">
+                     <div style="overflow:hidden">
+
+                            <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Address :</span>
+                                <span t-esc="doc.partner_id.street"/>
+
+                            </div>
+                            <div class="right" style="float: right;white-space: nowrap;">
+                                <span style="font-weight:bold;" t-esc="doc.partner_id.street1_arbi"></span>
+                                <span style="font-weight:bold;">  ‫عنوان‬ :‫‬</span>
+
+                            </div>
+                        </div>
+                 </t>
+                 <t t-if="doc.partner_id.street2">
+                      <div style="overflow:hidden">
+
+                            <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Address:</span>
+                                <span t-esc="doc.partner_id.street2"/>
+
+                            </div>
+                            <div class="right" style="float: right;white-space: nowrap;">
+                                <span style="font-weight:bold;" t-esc="doc.partner_id.street2_arbi"></span>
+                                <span style="font-weight:bold;">  ‫عنوان‬ :‫‬</span>
+
+                            </div>
+                        </div>
+                 </t>
+                <br/>
+            </xpath>
+
+            <xpath expr="//div[hasclass('page')]/div[2]" position="after">
+                <br/>
+                <div>
+
+                     <table style="border-collapse: collapse; border: none;">
+                   <t t-if="doc.agency_name">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                         <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Agency Name /</span>
+                                <span style="font-weight:bold;">اسم الوكالة </span>
+
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;" t-esc="doc.agency_name.name"/>
+                      </td>
+                    </tr>
+                   </t>
+
+                   <t t-if="doc.claim_no">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                         <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Claim# / </span>
+                                 <span style="font-weight:bold;"> رقم‬ ‫المطالبة </span>
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;" t-esc="doc.claim_no"/>
+                      </td>
+                    </tr>
+                   </t>
+
+                     <t t-if="doc.service_advisor">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                         <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Service Advisor /</span>
+                                <span style="font-weight:bold;"> اسم المشر ف </span>
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;" t-esc="doc.service_advisor.name"/>
+                      </td>
+                    </tr>
+                     </t>
+                      <t t-if="doc.partner_id.jobcard_no">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                        <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Job Card # /</span>
+                                <span style="font-weight:bold;"> رقم ‫كرت‬ ‫عمل ‫الوكالة </span>
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;" t-esc="doc.partner_id.jobcard_no"/>
+                      </td>
+                    </tr>
+                      </t>
+                  <t t-if="doc.vehicle.license_plate">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                          <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Plate # /</span>
+                                <span style="font-weight:bold;"> رقم ة اللوح </span>
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;"  t-esc="doc.vehicle.license_plate"/>
+                      </td>
+                    </tr>
+                  </t>
+                    <t t-if="doc.vehicle.model_id">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                        <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Car Type /</span>
+                                   <span style="font-weight:bold;"> اسم الوكالة</span>
+
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;" t-esc="doc.vehicle.model_id.name"/>
+                      </td>
+                    </tr>
+                    </t>
+                  <t t-if="doc.vehicle.vin_sn">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                         <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Chasis # /</span>
+                                 <span style="font-weight:bold;"> ‫‫رقم الشاصية </span>
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;" t-esc="doc.vehicle.vin_sn"/>
+                      </td>
+                    </tr>
+                  </t>
+                         <t t-if="doc.vehicle.odometer">
+                   <tr style="border: none;">
+
+                      <td style="border: none;padding:5px 5px" width="300px">
+                          <div class="left" style="float: left;white-space: nowrap;">
+                                <span style="font-weight:bold;">Odoo Meter /</span>
+                                 <span style="font-weight:bold;">قراءة د العدا </span>
+
+                            </div>
+                      </td>
+                      <td  style="border: none;padding:5px 5px" width="800px">
+                        <span style="padding-left:5px;font-weight:bold;" t-esc="doc.vehicle.odometer"/>
+                      </td>
+                    </tr>
+                  </t>
+
+                     </table>
+                    <br/>
+                </div>
+            </xpath>
+            <xpath expr="//div[hasclass('page')]/table[1]/thead[1]/tr[1]/th[5]" position="replace">
+                <th class="text-right">VAT</th>
+            </xpath>
+
+            <xpath expr="//div[hasclass('page')]/table[1]/thead[1]/tr[1]" position="replace">
+                <tr>
+                   <t t-set="colspan" t-value="5"/>
+                        <th class="text-left">Description / ‫الوصف‬</th>
+                        <th class="text-right">Quantity / ‫الكمية‬</th>
+                        <th class="text-right">Unit Price / السعر‬</th>
+                        <th t-if="display_discount" class="text-right" groups="sale.group_discount_per_so_line">
+                            <span>Disc / التخفيض (%)</span>
+                            <t t-set="colspan" t-value="colspan+1"/>
+                        </th>
+                        <th class="text-right">VAT / ‫الضريبة</th>
+                        <th class="text-right">
+                            <t groups="account.group_show_line_subtotals_tax_excluded">Amount / ‫المجموع</t>
+                            <t groups="account.group_show_line_subtotals_tax_included">Total Price / ‫المجموع</t>
+                        </th>
+                </tr>
+
+            </xpath>
+
+
+            <xpath expr="//div[hasclass('page')]/div[4]" position="replace">
+                <div class="clearfix">
+                    <div id="total" class="row" name="total">
+                        <div t-attf-class="#{'col-4' if report_type != 'html' else 'col-sm-7 col-md-5'} ml-auto">
+                            <table class="table table-sm">
+                                <tr class="border-black o_subtotal" style="">
+                                    <td>
+                                        <strong>
+                                            <span>Subtotal</span>
+                                            <span>/</span>
+                                            <span>الاجمالي قبل‬ ‫الضر‬‫يبه‬</span>
+                                        </strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_untaxed"/>
+                                    </td>
+                                </tr>
+                                <t t-foreach="doc.amount_by_group" t-as="amount_by_group">
+                                    <tr style="">
+                                        <t t-if="amount_by_group[3] == 1 and doc.amount_untaxed == amount_by_group[2]">
+                                            <td>
+                                                <span t-esc="amount_by_group[0]"/>
+                                                <span>&amp;nbsp;<span>on</span>&amp;nbsp;
+                                                    <t t-esc="amount_by_group[2]"
+                                                       t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                                </span>
+                                            </td>
+                                            <td class="text-right o_price_total">
+                                                <span t-esc="amount_by_group[1]"
+                                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                            </td>
+                                        </t>
+                                        <t t-else="">
+                                            <td>
+                                                <t t-if="amount_by_group[0]=='Taxes'">
+                                                    <span style="font-weight:bold;">VAT/</span>
+                                                    <span style="font-weight:bold;">‫ الضر‬‫‫يبة‬ القيمة‬ ‫المضافة‬</span>
+                                                </t>
+                                            </td>
+                                            <td class="text-right o_price_total">
+                                                <span t-esc="amount_by_group[1]"
+                                                      t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                                <tr class="border-black o_total">
+                                    <td>
+                                        <strong>
+                                            <span>Total</span>
+                                            <span>/</span>
+                                            <span>‫ الاجمالي بعدالضر‬‫يبه‬</span>
+                                        </strong>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-field="doc.amount_total"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt32 ml16 mr16" name="signature">
+                    <div class="offset-8">
+                        <strong>Customer Sign</strong>
+                        <br/>
+                        <strong>‬‫توقيع ‫العميل‬‬</strong>
+                        <span style="margin-left:30px;display: inline-block;
+                          border-bottom: 1px solid #000;
+                          width: 100px;  margin-left: 120px;margin-bottom:10px;
+                          border-top: 1px solid #000;
+                          width: 200px;
+                          text-align: right;"></span>
+                    </div>
+                </div>
+            </xpath>
+
+
+        </template>
+
+
+    </data>
+</odoo>

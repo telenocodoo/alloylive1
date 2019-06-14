@@ -1,0 +1,10 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+fleet_vehicle_model_access_right_user,fleet_vehicle_model_access_right,model_vehicle_model,,1,0,0,0
+fleet_vehicle_tag_access_right_user,fleet_vehicle_tag_access_right,model_vehicle_tag,,1,0,0,0
+fleet_vehicle_model_brand_access_right_user,fleet_vehicle_model_brand_access_right,model_vehicle_model_brand,,1,0,0,0
+fleet_vehicle_access_right_user,fleet_vehicle_access_right",model_vehicle,,1,1,0,0
+fleet_vehicle_model_access_right,fleet_vehicle_model_access_right,model_vehicle_model,,1,1,1,1
+fleet_vehicle_tag_access_right,fleet_vehicle_tag_access_right,model_vehicle_tag,,1,1,1,1
+fleet_vehicle_model_brand_access_right,fleet_vehicle_model_brand_access_right,model_vehicle_model_brand,,1,1,1,1
+fleet_vehicle_access_right,fleet_vehicle_access_right,model_vehicle,,1,1,1,1
+access_color,access_color,model_color,,1,1,1,1

@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_partnerform" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_type']" position="after">
+                <div class="oe_edit_only" options="{'horizontal': true}">
+                <field name="is_insurance" attrs="{'invisible': [('is_company','=',False)]}"/>
+                     <label for="is_insurance" attrs="{'invisible': [('is_company','=',False)]}"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//notebook/page[3]" position="after">
+                <page name="Vehicles" string="Vehicles">
+                    <group>
+                        <field name="vehicle_ids" nolabel="1">
+                            <tree delete="false" create="false">
+                                <field name="name"/>
+                                <field name="vin_sn"/>
+                                <field name="color"/>
+                                <field name="model_year"/>
+                                <field name="is_insured"/>
+                                <field name="insurance_company"/>
+                            </tree>
+                        </field>
+
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
